@@ -2,11 +2,17 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { DataRetrieverService } from './data-retriever.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('Service: DataRetriever', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DataRetrieverService]
+      imports: [
+        HttpClientModule,
+      ],
+      providers: [
+        DataRetrieverService,
+      ]
     });
   });
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Car, CarDetail } from '../models/carModel';
+import { urlConfig } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,13 @@ constructor(
   private http: HttpClient,
 ) { }
 
-  public getCarList(url: string): Observable<Car[]> {
+  public getCarList(): Observable<Car[]> {
+    const url = `${urlConfig.carUrl}${urlConfig.endpoints.carList}`;
     return this.http.get<Car[]>(url);
   }
 
-  public getCarDetail(url: string): Observable<CarDetail> {
+  public getCarDetail(id: string): Observable<CarDetail> {
+    const url = `${urlConfig.carUrl}${urlConfig.endpoints.carDetail}${id}`;
     return this.http.get<CarDetail>(url);
   }
 
