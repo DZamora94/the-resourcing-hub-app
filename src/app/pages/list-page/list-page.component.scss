@@ -1,0 +1,71 @@
+@import "../../styles/mixins";
+
+trh-list-page {
+
+    .item {
+        .detail {
+            .name {
+                font-family: sans-serif;
+            }
+        }
+    }
+
+    // DESKTOP VERSION
+    
+    @include desktop {
+        .content {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .item {
+            width: 470px; /* min-content; */
+            text-align: center;
+        }
+    }
+    
+    // TABLET VERSION
+    
+    // MOBILE VERSION
+    @include mobile {
+        .content {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .item {
+            display: flex;
+            
+            .image {
+                height: 150px;
+                width: 150px;
+            }
+
+            .specifications {
+                padding: 24px;
+                font-family: sans-serif;
+                border-top: 1px solid lightgrey;
+                width: 100%;
+
+                .name {
+                    font-size: 22px;
+                    font-weight: 600;
+                    letter-spacing: 3px;
+                    margin-bottom: 3px;
+                }
+
+                .detail {
+                    font-size: 17px;
+
+                    .price {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+}
+

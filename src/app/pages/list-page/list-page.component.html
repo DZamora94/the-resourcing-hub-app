@@ -1,9 +1,12 @@
-<div *ngFor="let car of carListObs | async; let i = index">
-  <div>
-    <img src="assets{{car.media[0].url}}">
-    <div>{{car.media[0].name}}</div>
-    <div *ngIf="(carDetailListObs[i] | async) as carDetailList">
-      <div>{{carDetailList.description}}</div>
+<div class="content">
+  <div class="item" *ngFor="let car of carListObs | async; let i = index">
+    <img class="image" src="assets{{car.media[0].url}}">
+    <div class="specifications">
+      <div class="name">{{car.media[0].name | uppercase}}</div>
+      <div class="detail" *ngIf="(carDetailListObs[i] | async) as carDetailList">
+        <div class="price">From {{carDetailList.price}}</div>
+        <div class="description">{{carDetailList.description}}</div>
+      </div>
     </div>
   </div>
 </div>

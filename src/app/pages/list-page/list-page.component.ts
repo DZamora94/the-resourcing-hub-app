@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DataRetrieverService } from '../../services/data-retriever.service';
 import { Car, CarDetail } from '../../models/carModel';
 import { Observable } from 'rxjs';
@@ -7,7 +7,8 @@ import { tap } from 'rxjs/operators';
 @Component({
   selector: 'trh-list-page',
   templateUrl: './list-page.component.html',
-  styleUrls: ['./list-page.component.scss']
+  styleUrls: ['./list-page.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ListPageComponent implements OnInit {
 
@@ -19,11 +20,15 @@ export class ListPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.carListObs = this.dataService.getCarList('https://itg-prd-recruit.appspot.com/api/vehicles/')
+    this.getData();
+  }
+
+  private getData() {
+    this.carListObs = this.dataService.getCarList()
     .pipe(
       tap(carArray => {
         this.carDetailListObs = carArray.map(car => {
-          return this.dataService.getCarDetail(`https://itg-prd-recruit.appspot.com/api/vehicle/${car.id}`);
+          return this.dataService.getCarDetail(car.id);
         });
       })
     );
