@@ -2,7 +2,7 @@
   <div class="item" *ngFor="let car of carListObs | async; let i = index">
     <img class="image" src="assets{{car.media[0].url}}">
     <div class="specifications">
-      <div class="name">{{car.media[0].name | uppercase}}</div>
+      <p class="name">{{car.media[0].name | uppercase}}</p>
       <div class="detail" *ngIf="(carDetailListObs[i] | async) as carDetailList">
         <div class="price">From {{carDetailList.price}}</div>
         <div class="description">{{carDetailList.description}}</div>

@@ -1,71 +1,129 @@
 @import "../../styles/mixins";
 
+$dark-grey-font: #4A4F54;
+$light-grey: #e2e2e2;
+
 trh-list-page {
 
+  // COMMON
+
+  .content {
+    display: flex;
+    flex-direction: row;
     .item {
+      display: flex;
+      flex-direction: column;
+
+      .specifications {
+        font-family: sans-serif;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .name {
+          font-size: 18px;
+          font-weight: 600;
+          letter-spacing: 1px;
+          margin: 20px 0;
+        }
         .detail {
+          font-size: 12px;
+          color: $dark-grey-font;
+
+          .price {
+            margin-bottom: 5px;
+          }
+          .description {
+            padding: 5px 10%;
+          }
+        }
+      }
+    }
+  }
+
+  // DESKTOP VERSION
+
+  @include desktop {
+    .content {
+      flex-wrap: wrap;
+
+      .item {
+        width: 25%;
+
+        .specifications {
+            border-right: 1px solid $light-grey;
+
             .name {
-                font-family: sans-serif;
+              border-top: 3px solid black;
+              border-bottom: 3px solid black;
             }
+          }
         }
-    }
+      }
+  }
 
-    // DESKTOP VERSION
-    
-    @include desktop {
-        .content {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
+  // TABLET VERSION
+
+  @include tablet {
+    .content {
+      flex-wrap: wrap;
+
+      .item {
+        width: 50%;
+
+        .specifications {
+          .name {
+            border-top: 3px solid black;
+            border-bottom: 3px solid black;
+          }
         }
-        
+      }
+    }
+  }
+
+  // MOBILE VERSION
+  @include mobile {
+    .content {
+        flex-direction: column;
+
         .item {
-            width: 470px; /* min-content; */
-            text-align: center;
+          flex-direction: row;
+
+        .image {
+          height: 150px;
+          width: 150px;
         }
-    }
-    
-    // TABLET VERSION
-    
-    // MOBILE VERSION
-    @include mobile {
-        .content {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .item {
-            display: flex;
-            
-            .image {
-                height: 150px;
-                width: 150px;
+
+        .specifications {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: start;
+          text-align: start;
+          padding-left: 25px;
+          border-top: 1px solid $light-grey;
+
+          .name {
+            font-size: 22px;
+            letter-spacing: 3px;
+            margin-bottom: 3px;
+            margin: 0px;
+          }
+          .detail {
+            font-size: 17px;
+
+            .price {
+              margin-bottom: 10px;
             }
-
-            .specifications {
-                padding: 24px;
-                font-family: sans-serif;
-                border-top: 1px solid lightgrey;
-                width: 100%;
-
-                .name {
-                    font-size: 22px;
-                    font-weight: 600;
-                    letter-spacing: 3px;
-                    margin-bottom: 3px;
-                }
-
-                .detail {
-                    font-size: 17px;
-
-                    .price {
-                        margin-bottom: 10px;
-                    }
-                }
+            .description {
+              padding: 0px;
             }
+          }
         }
+      }
     }
+  }
 
 }
 

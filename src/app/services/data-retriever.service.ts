@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Car, CarDetail } from '../models/carModel';
 import { urlConfig } from '../app.config';
 
@@ -19,6 +19,9 @@ constructor(
   }
 
   public getCarDetail(id: string): Observable<CarDetail> {
+    if (!id) {
+      return of(null);
+    }
     const url = `${urlConfig.carUrl}${urlConfig.endpoints.carDetail}${id}`;
     return this.http.get<CarDetail>(url);
   }
