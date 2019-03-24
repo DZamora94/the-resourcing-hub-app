@@ -6,13 +6,13 @@ $desktop: 992px !default;
     @content
   }
 };
-  
+
 @mixin tablet {
-  @media screen and (min-width: $tablet) {
+  @media screen and (max-width: $desktop - 1px) and (min-width: $tablet) {
     @content
   }
 };
-  
+
 @mixin desktop {
   @media screen and (min-width: $desktop) {
     @content
